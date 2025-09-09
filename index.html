@@ -26,6 +26,9 @@
     .nav-menu a:hover{color:var(--primary-orange)}
     .nav-menu a::after{content:'';position:absolute;width:0;height:2px;bottom:-5px;left:0;background:var(--gradient-primary);transition:width .3s ease}
     .nav-menu a:hover::after{width:100%}
+    .nav-back{background:var(--gradient-secondary);color:#fff !important;padding:8px 16px;border-radius:20px;font-weight:700;transition:all .3s ease}
+    .nav-back:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.2);color:#fff !important}
+    .nav-back::after{display:none}
 
     .hero{height:100vh;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
     .hero::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><pattern id=%22research%22 x=%220%22 y=%220%22 width=%2220%22 height=%2220%22 patternUnits=%22userSpaceOnUse%22><g stroke=%22rgba(255,255,255,0.1)%22 stroke-width=%220.3%22 fill=%22none%22><circle cx=%2210%22 cy=%2210%22 r=%223%22/><circle cx=%2210%22 cy=%2210%22 r=%226%22/><path d=%22M10,4 L16,16 L4,16 Z%22 fill=%22rgba(255,255,255,0.05)%22/></g></pattern></defs><rect width=%22100%22 height=%22100%22 fill=%22url(%23research)%22/></svg>') repeat;animation:researchFloat 20s linear infinite}
