@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuerpos Académicos - Licenciatura en Ingeniería en Nanotecnología - UAEH</title>
+  <link rel="icon" href="assets/logonano.png">
+  <meta name="description" content="Conoce a nuestros investigadores SNI: 100% del núcleo básico son miembros del Sistema Nacional de Investigadores. Excelencia académica en nanotecnología.">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:#333;overflow-x:hidden}
+    :root{
+      --primary-orange:#FF6B35;--primary-red:#E63946;--primary-purple:#A663CC;
+      --accent-orange:#FF8500;--dark-gray:#2D3748;--light-gray:#F7FAFC;
+      --gradient-primary:linear-gradient(135deg,#FF6B35 0%,#E63946 50%,#A663CC 100%);
+      --gradient-secondary:linear-gradient(135deg,#A663CC 0%,#FF8500 100%);
+    }
+    nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(15px);z-index:1000;padding:10px 0;transition:all .3s ease;box-shadow:0 2px 20px rgba(0,0,0,.05)}
+    nav.scrolled{background:rgba(255,255,255,.98);box-shadow:0 2px 30px rgba(0,0,0,.15)}
+    .nav-container{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px}
+    .logo-container{display:flex;align-items:center;gap:12px}
+    .logo-img{height:54px;width:auto;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,.15))}
+    .logo-text{font-size:1.2rem;font-weight:700;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav-menu{display:flex;list-style:none;gap:35px}
+    .nav-menu a{text-decoration:none;color:var(--dark-gray);font-weight:600;font-size:.95rem;transition:all .3s ease;position:relative}
+    .nav-menu a:hover{color:var(--primary-orange)}
+    .nav-menu a::after{content:'';position:absolute;width:0;height:2px;bottom:-5px;left:0;background:var(--gradient-primary);transition:width .3s ease}
+    .nav-menu a:hover::after{width:100%}
+
+    .hero{height:100vh;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><pattern id=%22research%22 x=%220%22 y=%220%22 width=%2220%22 height=%2220%22 patternUnits=%22userSpaceOnUse%22><g stroke=%22rgba(255,255,255,0.1)%22 stroke-width=%220.3%22 fill=%22none%22><circle cx=%2210%22 cy=%2210%22 r=%223%22/><circle cx=%2210%22 cy=%2210%22 r=%226%22/><path d=%22M10,4 L16,16 L4,16 Z%22 fill=%22rgba(255,255,255,0.05)%22/></g></pattern></defs><rect width=%22100%22 height=%22100%22 fill=%22url(%23research)%22/></svg>') repeat;animation:researchFloat 20s linear infinite}
+    @keyframes researchFloat{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(-20px,-20px) rotate(360deg)}}
+    
+    .hero-content{text-align:center;z-index:2;max-width:1000px;padding:0 20px}
+    .hero-badge{background:rgba(255,255,255,.15);color:#fff;padding:8px 20px;border-radius:25px;font-size:.9rem;font-weight:600;display:inline-block;margin-bottom:16px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);animation:slideInUp 1s ease-out}
+    .hero h1{font-size:3.4rem;font-weight:800;color:#fff;margin-bottom:14px;text-shadow:2px 2px 8px rgba(0,0,0,.3);line-height:1.1;animation:slideInUp 1s ease-out .2s both}
+    .hero .subtitle{font-size:1.25rem;color:rgba(255,255,255,.95);margin-bottom:28px;font-weight:400;animation:slideInUp 1s ease-out .4s both}
+    .hero-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;animation:slideInUp 1s ease-out .6s both;margin-top:20px}
+    .hero-stat{text-align:center;color:#fff}
+    .hero-stat h3{font-size:2.8rem;font-weight:900;margin-bottom:5px}
+    .hero-stat p{font-size:1rem;opacity:.9}
+    
+    @keyframes slideInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+    
+    section{padding:100px 0;max-width:1400px;margin:0 auto;padding-left:20px;padding-right:20px}
+    .section-title{font-size:2.6rem;font-weight:800;text-align:center;margin-bottom:18px;color:var(--dark-gray);position:relative}
+    .section-subtitle{font-size:1.15rem;text-align:center;color:#666;margin-bottom:52px;max-width:800px;margin-left:auto;margin-right:auto}
+
+    .excellence-banner{background:var(--light-gray);margin:0 -20px;padding:60px 20px;text-align:center}
+    .excellence-content{max-width:1000px;margin:0 auto}
+    .excellence-badge{background:var(--gradient-secondary);color:#fff;padding:12px 25px;border-radius:25px;font-size:.95rem;font-weight:700;display:inline-block;margin-bottom:20px}
+    .excellence-title{font-size:2.4rem;font-weight:800;color:var(--dark-gray);margin-bottom:16px}
+    .excellence-text{font-size:1.1rem;color:#555;margin-bottom:30px}
+    
+    .cuerpos-section{background:var(--light-gray);margin:80px -20px;padding:80px 20px}
+    .cuerpos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:40px;margin-top:50px}
+    .cuerpo-card{background:#fff;border-radius:25px;padding:40px;box-shadow:0 15px 40px rgba(0,0,0,.1);transition:all .3s ease;position:relative;overflow:hidden}
+    .cuerpo-card::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:var(--gradient-primary)}
+    .cuerpo-card:hover{transform:translateY(-8px);box-shadow:0 25px 60px rgba(0,0,0,.15)}
+    .cuerpo-status{background:var(--gradient-secondary);color:#fff;padding:8px 16px;border-radius:20px;font-size:.85rem;font-weight:600;display:inline-block;margin-bottom:20px}
+    .cuerpo-title{font-size:1.4rem;font-weight:700;color:var(--dark-gray);margin-bottom:16px;line-height:1.3}
+    .miembros-list{list-style:none;margin-top:20px}
+    .miembro-item{padding:12px 0;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;gap:12px}
+    .miembro-item:last-child{border-bottom:none}
+    .lider-badge{background:rgba(255,107,53,.1);color:var(--primary-orange);padding:4px 8px;border-radius:12px;font-size:.75rem;font-weight:600}
+    .miembro-name{font-weight:600;color:var(--dark-gray)}
+    
+    .investigadores-section{margin-top:80px}
+    .investigadores-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:35px;margin-top:50px}
+    .investigador-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.08);transition:all .3s ease;position:relative}
+    .investigador-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.15)}
+    .investigador-header{background:var(--gradient-primary);color:#fff;padding:30px 25px;text-align:center;position:relative}
+    .investigador-header::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:10px solid var(--primary-purple)}
+    .investigador-name{font-size:1.3rem;font-weight:700;margin-bottom:8px}
+    .investigador-title{font-size:.95rem;opacity:.9;margin-bottom:12px}
+    .sni-badge{background:rgba(255,255,255,.2);padding:6px 12px;border-radius:15px;font-size:.8rem;font-weight:600;border:1px solid rgba(255,255,255,.3)}
+    .investigador-content{padding:25px}
+    .research-areas{margin-bottom:20px}
+    .research-areas h4{color:var(--primary-red);font-size:1rem;font-weight:600;margin-bottom:10px}
+    .research-tag{background:rgba(166,99,204,.1);color:#5b21b6;padding:5px 10px;border-radius:12px;font-size:.8rem;margin:3px;display:inline-block}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:20px 0;padding:15px 0;border-top:1px solid #f0f0f0}
+    .metric{text-align:center}
+    .metric-value{font-size:1.4rem;font-weight:800;color:var(--primary-orange)}
+    .metric-label{font-size:.8rem;color:#666;font-weight:600}
+    .profile-text{font-size:.95rem;color:#555;line-height:1.6}
+    .orcid-link{display:inline-flex;align-items:center;gap:6px;color:var(--primary-red);text-decoration:none;font-weight:600;font-size:.9rem;margin-top:12px}
+    .orcid-link:hover{color:var(--primary-orange)}
+    
+    .detailed-profile{display:none;margin-top:20px;padding-top:20px;border-top:2px solid #f0f0f0}
+    .detailed-profile.active{display:block}
+    .profile-section{margin-bottom:20px}
+    .profile-section h4{color:var(--primary-red);font-size:1.05rem;font-weight:700;margin-bottom:8px}
+    .toggle-btn{background:var(--gradient-secondary);color:#fff;border:none;padding:8px 16px;border-radius:20px;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .3s ease;margin-top:12px}
+    .toggle-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+    
+    .contact{background:var(--gradient-primary);margin:90px -20px 0;padding:70px 20px;color:#fff;position:relative;overflow:hidden}
+    .contact-content{max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:2}
+    .contact h3{font-size:2rem;font-weight:700;margin-bottom:20px}
+    .contact-item{display:inline-flex;align-items:center;gap:12px;margin:0 20px 15px;padding:8px 0}
+    .contact-icon{width:40px;height:40px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+    
+    .fade-in{opacity:0;transform:translateY(30px);transition:all .6s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+    
+    @media (max-width:768px){
+      .hero h1{font-size:2.6rem}
+      .hero .subtitle{font-size:1.05rem}
+      .hero-stats{flex-direction:column;gap:20px}
+      .nav-menu{display:none}
+      .cuerpos-grid{grid-template-columns:1fr}
+      .investigadores-grid{grid-template-columns:1fr}
+      .metrics{grid-template-columns:repeat(2,1fr)}
+      .contact-item{margin:10px 0;justify-content:center}
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo-container">
+        <img src="assets/logonano.png" alt="Logo Nanotecnología UAEH" class="logo-img">
+        <div class="logo-text">Nano-UAEH</div>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#cuerpos">Cuerpos Académicos</a></li>
+        <li><a href="#investigadores">Investigadores</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Universidad Autónoma del Estado de Hidalgo • ESAp</div>
+      <h1>Excelencia Académica en Nanotecnología</h1>
+      <p class="subtitle">Nuestros investigadores SNI impulsan la investigación de vanguardia y forman a la próxima generación de nanotecnólogos</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <h3>100%</h3>
+          <p>Profesores SNI</p>
+        </div>
+        <div class="hero-stat">
+          <h3>2</h3>
+          <p>Cuerpos Académicos</p>
+        </div>
+        <div class="hero-stat">
+          <h3>6</h3>
+          <p>Investigadores</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="excellence-banner">
+    <div class="excellence-content fade-in">
+      <div class="excellence-badge">FORTALEZA ACADÉMICA</div>
+      <h2 class="excellence-title">Sistema Nacional de Investigadores</h2>
+      <p class="excellence-text">
+        Nos enorgullece contar con el <strong>100% de nuestros profesores investigadores del núcleo básico</strong> 
+        como miembros activos del Sistema Nacional de Investigadores (SNI), garantizando la más alta calidad 
+        académica y formación de vanguardia en nanotecnología.
+      </p>
+    </div>
+  </div>
+
+  <section id="cuerpos" class="cuerpos-section">
+    <h2 class="section-title fade-in">Cuerpos Académicos</h2>
+    <p class="section-subtitle fade-in">
+      Dos grupos de investigación consolidados que sustentan la excelencia académica de nuestro programa
+    </p>
+    
+    <div class="cuerpos-grid">
+      <div class="cuerpo-card fade-in">
+        <div class="cuerpo-status">CONSOLIDADO</div>
+        <h3 class="cuerpo-title">Sistemas Energéticos y Materiales Avanzados</h3>
+        <p style="color:#666;margin-bottom:20px;">
+          Enfoque en el desarrollo de materiales nanoestructurados para aplicaciones energéticas 
+          y sistemas avanzados de alta eficiencia.
+        </p>
+        <ul class="miembros-list">
+          <li class="miembro-item">
+            <div class="lider-badge">LÍDER</div>
+            <span class="miembro-name">Dr. Luis Alberto Hernández Hernández</span>
+          </li>
+          <li class="miembro-item">
+            <span class="miembro-name">Dr. Arturo Hernández Hernández</span>
+          </li>
+          <li class="miembro-item">
+            <span class="miembro-name">Dr. Aldo Christiaan Jardinez Vera</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="cuerpo-card fade-in">
+        <div class="cuerpo-status">EN CONSOLIDACIÓN</div>
+        <h3 class="cuerpo-title">Nanociencia y Nanotecnología</h3>
+        <p style="color:#666;margin-bottom:20px;">
+          Investigación de frontera en nanociencia computacional, síntesis de nanomateriales 
+          y aplicaciones tecnológicas innovadoras.
+        </p>
+        <ul class="miembros-list">
+          <li class="miembro-item">
+            <div class="lider-badge">LÍDER</div>
+            <span class="miembro-name">Dra. Ariadna Sánchez Castillo</span>
+          </li>
+          <li class="miembro-item">
+            <span class="miembro-name">Dra. María del Pilar Gutiérrez Amador</span>
+          </li>
+          <li class="miembro-item">
+            <span class="miembro-name">Dr. José de Jesús Pelayo Cárdenas</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="investigadores" class="investigadores-section">
+    <h2 class="section-title fade-in">Nuestros Investigadores</h2>
+    <p class="section-subtitle fade-in">
+      Expertos de clase mundial en nanotecnología que garantizan una formación de excelencia
+    </p>
+    
+    <div class="investigadores-grid">
+      <!-- Dr. José de Jesús Pelayo Cárdenas -->
+      <div class="investigador-card fade-in">
+        <div class="investigador-header">
+          <h3 class="investigador-name">Dr. José de Jesús Pelayo Cárdenas</h3>
+          <p class="investigador-title">Nanociencia Computacional y Estructuras Quirales</p>
+          <div class="sni-badge">SNI Nivel I</div>
+        </div>
+        <div class="investigador-content">
+          <div class="research-areas">
+            <h4>Líneas de Investigación</h4>
+            <span class="research-tag">Quiralidad en Nanocúmulos</span>
+            <span class="research-tag">Nanotubos de Carbono</span>
+            <span class="research-tag">Cálculos DFT</span>
+            <span class="research-tag">Semiconductores</span>
+          </div>
+          
+          <div class="metrics">
+            <div class="metric">
+              <div class="metric-value">273</div>
+              <div class="metric-label">CITAS</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">7</div>
+              <div class="metric-label">ÍNDICE H</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">15+</div>
+              <div class="metric-label">ARTÍCULOS</div>
+            </div>
+          </div>
+          
+          <p class="profile-text">
+            Especialista en nanociencia computacional con enfoque en estructuras quirales. 
+            Utiliza cálculos de primeros principios basados en DFT para explorar propiedades 
+            únicas de nanomateriales.
+          </p>
+          
+          <a href="https://orcid.org/0000-0003-1987-3701" target="_blank" class="orcid-link">
+            🆔 ORCID: 0000-0003-1987-3701
+          </a>
+          
+          <button class="toggle-btn" onclick="toggleProfile('pelayo')">Ver perfil completo</button>
+          
+          <div class="detailed-profile" id="profile-pelayo">
+            <div class="profile-section">
+              <h4>Formación Académica</h4>
+              <p><strong>Doctorado en Ciencia e Ingeniería de Materiales</strong> - Especialización en nanociencia computacional de vanguardia, con énfasis en el estudio de nanoestructuras quirales mediante métodos computacionales avanzados.</p>
+            </div>
+            
+            <div class="profile-section">
+              <h4>Especialización de Vanguardia</h4>
+              <p>Su expertise se centra en el fascinante mundo de las <strong>nanoestructuras quirales</strong>, aplicando cálculos de primeros principios basados en la <strong>Teoría del Funcional de la Densidad (DFT)</strong> utilizando códigos computacionales avanzados como SIESTA y Quantum Espresso.</p>
+            </div>
+            
+            <div class="profile-section">
+              <h4>Proyectos Actuales</h4>
+              <ul style="margin-left:20px;color:#555;">
+                <li><strong>Adsorción enantioespecífica</strong> de moléculas quirales en superficies nanoestructuradas</li>
+                <li><strong>Estructuras bidimensionales basadas en manganeso</strong> para sensores de gases</li>
+                <li><strong>Nanopelículas de azufre</strong> para el desarrollo de nuevos materiales bidimensionales (sulfurenos)</li>
+              </ul>
+            </div>
+            
+            <div class="profile-section">
+              <h4>Impacto Científico</h4>
+              <p>Sus publicaciones incluyen trabajos en prestigiosas revistas internacionales como <strong>Nature Communications</strong> y <strong>Accounts of Chemical Research</strong>, abordando desde la estructura perfecta de cúmulos de oro hasta el modelado de confinamiento cuántico en nanocristales semiconductores.</p>
+            </div>
+            
+            <div class="profile-section">
+              <h4>Infraestructura y Equipamiento</h4>
+              <p>Su experiencia incluye la <strong>instalación de equipos de supercómputo</strong>, garantizando que nuestros estudiantes tengan acceso a las herramientas computacionales más avanzadas para sus proyectos de investigación.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder cards for other investigators -->
+      <div class="investigador-card fade-in" style="opacity:0.7;position:relative;">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:10;background:rgba(255,255,255,0.95);padding:20px;border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,0.1);">
+          <p style="color:var(--primary-red);font-weight:600;margin-bottom:8px;">Próximamente</p>
+          <p style="color:#666;font-size:0.9rem;">Perfiles adicionales en desarrollo</p>
+        </div>
+        <div class="investigador-header">
+          <h3 class="investigador-name">Dr. Luis Alberto Hernández Hernández</h3>
+          <p class="investigador-title">Sistemas Energéticos y Materiales</p>
+          <div class="sni-badge">SNI</div>
+        </div>
+        <div class="investigador-content">
+          <div class="research-areas">
+            <h4>Líneas de Investigación</h4>
+            <span class="research-tag">Materiales Energéticos</span>
+            <span class="research-tag">Nanoestructuras</span>
+          </div>
+          <p class="profile-text">Líder del Cuerpo Académico Consolidado de Sistemas Energéticos y Materiales Avanzados...</p>
+        </div>
+      </div>
+
+      <div class="investigador-card fade-in" style="opacity:0.7;position:relative;">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:10;background:rgba(255,255,255,0.95);padding:20px;border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,0.1);">
+          <p style="color:var(--primary-red);font-weight:600;margin-bottom:8px;">Próximamente</p>
+          <p style="color:#666;font-size:0.9rem;">Perfiles adicionales en desarrollo</p>
+        </div>
+        <div class="investigador-header">
+          <h3 class="investigador-name">Dra. Ariadna Sánchez Castillo</h3>
+          <p class="investigador-title">Nanociencia y Nanotecnología</p>
+          <div class="sni-badge">SNI</div>
+        </div>
+        <div class="investigador-content">
+          <div class="research-areas">
+            <h4>Líneas de Investigación</h4>
+            <span class="research-tag">Nanociencia</span>
+            <span class="research-tag">Síntesis</span>
+          </div>
+          <p class="profile-text">Líder del Cuerpo Académico en Consolidación de Nanociencia y Nanotecnología...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <div class="contact-content">
+      <h3>¿Quieres conocer más sobre nuestros investigadores?</h3>
+      <p style="font-size:1.1rem;margin-bottom:30px;opacity:.95;">
+        Contáctanos para conocer más detalles sobre las líneas de investigación y oportunidades de colaboración
+      </p>
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>esap_ing.nanotecnologia@uaeh.edu.mx</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>771 717 2000, Ext. 10703</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+      });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll',()=>{
+      const navbar=document.getElementById('navbar');
+      navbar.classList.toggle('scrolled', window.scrollY>100);
+    });
+
+    // Intersection Observer for fade-ins
+    const fadeObserver = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    },{threshold:0.1, rootMargin:'0px 0px -50px 0px'});
+    document.querySelectorAll('.fade-in').forEach(el=>fadeObserver.observe(el));
+
+    // Toggle profile details
+    function toggleProfile(profileId) {
+      const profile = document.getElementById(`profile-${profileId}`);
+      const btn = event.target;
+      
+      if (profile.classList.contains('active')) {
+        profile.classList.remove('active');
+        btn.textContent = 'Ver perfil completo';
+      } else {
+        profile.classList.add('active');
+        btn.textContent = 'Ocultar perfil';
+      }
+    }
+  </script>
+</body>
+</html>
